@@ -22,7 +22,3 @@ def number_of_account(account_number: str) -> str:
     sliced = mask_number[-6:]
     return sliced
 
-
-print(number_of_card("7000792289606361"))
-#
-print(number_of_account("73654108430135874305"))

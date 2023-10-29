@@ -19,6 +19,3 @@ def datetime_of_operation(date_and_time: str) -> str:
     return ".".join(reversed(date[0].split("-")))
 
 
-print(datetime_of_operation("2018-07-11T02:26:18.671407"))
-print(type_of_info('Счет 64686473678894779589'))
-print(type_of_info('Visa Platinum 8990922113665229'))
