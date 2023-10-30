@@ -21,4 +21,3 @@ def number_of_account(account_number: str) -> str:
     mask_number = (len(account_number[:-4]) * '*') + account_number[-4:]
     sliced = mask_number[-6:]
     return sliced
-

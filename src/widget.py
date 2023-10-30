@@ -17,5 +17,3 @@ def datetime_of_operation(date_and_time: str) -> str:
     возвращает строку с датой в виде "11.07.2018"""
     date = date_and_time.split("T")
     return ".".join(reversed(date[0].split("-")))
-
-
