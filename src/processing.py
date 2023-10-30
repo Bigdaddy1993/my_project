@@ -1,4 +1,4 @@
-def sort_dict(list_of_dict: list[dict], get_argument="EXECUTED") -> list[dict]:
+def sort_dict(list_of_dict: list[dict], get_argument: str = "EXECUTED") -> list[dict]:
     """принимает на вход список словарей и значение
     для ключа state (опциональный параметр со значением по умолчанию  EXECUTED)
     и возвращает новый список, содержащий только те словари, у которых ключ
@@ -24,10 +24,10 @@ list_of_date = [
 ]
 
 
-def sort_date(list_of_dict: list[dict]) -> list[dict]:
+def sort_date(list_of_dict: list[dict], reverse_or_not: bool = True) -> list[dict]:
     """принимает на вход список словарей и возвращает новый список
     в котором исходные словари отсортированы по убыванию даты"""
-    sorted_date = sorted(list_of_dict, key=lambda date: date["date"], reverse=True)
+    sorted_date = sorted(list_of_dict, key=lambda date: date["date"], reverse=reverse_or_not)
     return sorted_date
 
 
