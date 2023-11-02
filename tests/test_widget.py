@@ -16,7 +16,7 @@ from src.widget import datetime_of_operation, type_of_info
         ("Счет 73654108430135874305", "Счет **4305"),
     ],
 )
-def test_type_of_info(arguments, expected):
+def test_type_of_info(arguments: str, expected: str) -> None:
     assert type_of_info(arguments) == expected
 
 
@@ -28,5 +28,5 @@ def test_type_of_info(arguments, expected):
         ("2023-11-01T02:26:18.671407", "01.11.2023"),
     ],
 )
-def test_datetime_of_operation(arguments, expected):
+def test_datetime_of_operation(arguments: str, expected: str) -> None:
     assert datetime_of_operation(arguments) == expected

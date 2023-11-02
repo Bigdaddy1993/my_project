@@ -4,7 +4,7 @@ from src.processing import sort_date, sort_dict
 
 
 @pytest.fixture()
-def data():
+def data() -> list[dict[str, str]]:
     return [
         {"id": "41428829", "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
         {"id": "939719570", "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
@@ -32,7 +32,7 @@ def data():
         ),
     ],
 )
-def test_sort_dict(data, inner_data, expected):
+def test_sort_dict(data: list[dict[str, str]], inner_data: str, expected: list[dict[str, str]]) -> None:
     assert sort_dict(data, inner_data) == expected
 
 
@@ -69,5 +69,5 @@ def stock_data():
         ),
     ],
 )
-def test_sort_date(stock_data, inner_data, expected):
+def test_sort_date(stock_data: list[dict[str, str]], inner_data: bool, expected: list[dict[str, str]]) -> None:
     assert sort_date(stock_data, inner_data) == expected
