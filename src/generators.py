@@ -60,13 +60,13 @@ def filter_by_currency(transactions: list[dict], currency: str) -> Generator:
     в которых указана заданная валюта
     """
     for transaction in transactions:
-        if transaction['operationAmount']['currency']['code'] == currency.upper():
+        if transaction["operationAmount"]["currency"]["code"] == currency.upper():
             yield transaction
 
 
-usd_transactions = filter_by_currency(transactions1, 'USD')
+usd_transactions = filter_by_currency(transactions1, "USD")
 for _ in range(3):
-    print(next(usd_transactions)['id'])
+    print(next(usd_transactions)["id"])
 
 
 def transaction_descriptions(transactions: list[dict]) -> Generator:
@@ -76,7 +76,7 @@ def transaction_descriptions(transactions: list[dict]) -> Generator:
     :return: возвращает описание каждой операции по очереди
     """
     for transaction in transactions:
-        yield transaction['description']
+        yield transaction["description"]
 
 
 description_of_operations = transaction_descriptions(transactions1)
@@ -94,9 +94,9 @@ def card_number_generator(start: int, stop: int) -> Generator:
     """
     generator = 16 - len(str(stop))
     for number in range(start, stop + 1):
-        number_generator = (generator * '0') + str(number)
-        yield f'{number_generator[0:4]} {number_generator[4:8]} {number_generator[8:12]} {number_generator[12:]}'
+        number_generator = (generator * "0") + str(number)
+        yield f"{number_generator[0:4]} {number_generator[4:8]} {number_generator[8:12]} {number_generator[12:]}"
 
 
-for card_number in card_number_generator(1, 5):
+for card_number in card_number_generator(26, 29):
     print(card_number)

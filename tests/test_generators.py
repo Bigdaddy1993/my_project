@@ -1,5 +1,6 @@
 import pytest
-from src.generators import filter_by_currency, transaction_descriptions, card_number_generator
+
+from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 
 @pytest.fixture
@@ -53,31 +54,40 @@ def fixture():
     ]
 
 
-@pytest.mark.parametrize('inner_data, expected', [('USD', [939719570, 142264268, 895315941]),
-                                                  ('RUB', [873106923, 594226727])])
+@pytest.mark.parametrize(
+    "inner_data, expected", [("USD", [939719570, 142264268, 895315941]), ("RUB", [873106923, 594226727])]
+)
 def test_filter_by_currency(fixture, inner_data, expected):
     usd_transactions = filter_by_currency(fixture, inner_data)
-    assert [x['id'] for x in list(usd_transactions)] == expected
+    assert [x["id"] for x in list(usd_transactions)] == expected
 
 
 def test_transaction_descriptions(fixture):
-    assert list(transaction_descriptions(fixture)) == ['Перевод организации',
-                                                       'Перевод со счета на счет',
-                                                       'Перевод со счета на счет',
-                                                       'Перевод с карты на карту',
-                                                       'Перевод организации']
+    assert list(transaction_descriptions(fixture)) == [
+        "Перевод организации",
+        "Перевод со счета на счет",
+        "Перевод со счета на счет",
+        "Перевод с карты на карту",
+        "Перевод организации",
+    ]
 
 
-@pytest.mark.parametrize('start_data, stop_data, expected', [(1, 5,
-                                                              ['0000 0000 0000 0001',
-                                                               '0000 0000 0000 0002',
-                                                               '0000 0000 0000 0003',
-                                                               '0000 0000 0000 0004',
-                                                               '0000 0000 0000 0005']),
-                                                             (26, 29, ['0000 0000 0000 0026',
-                                                                       '0000 0000 0000 0027',
-                                                                       '0000 0000 0000 0028',
-                                                                       '0000 0000 0000 0029'
-                                                                       ])])
+@pytest.mark.parametrize(
+    "start_data, stop_data, expected",
+    [
+        (
+            1,
+            5,
+            [
+                "0000 0000 0000 0001",
+                "0000 0000 0000 0002",
+                "0000 0000 0000 0003",
+                "0000 0000 0000 0004",
+                "0000 0000 0000 0005",
+            ],
+        ),
+        (26, 29, ["0000 0000 0000 0026", "0000 0000 0000 0027", "0000 0000 0000 0028", "0000 0000 0000 0029"]),
+    ],
+)
 def test_card_number_generator(start_data, stop_data, expected):
     assert list(number for number in card_number_generator(start_data, stop_data)) == expected
