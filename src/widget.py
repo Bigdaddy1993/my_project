@@ -1,4 +1,4 @@
-from src.masks import number_of_card, number_of_account
+from src.masks import number_of_account, number_of_card
 
 
 def type_of_info(masking: str) -> str:

@@ -1,8 +1,6 @@
-from typing import Any, Generator
+from typing import Generator
 
-from random import randint
-
-transactions1 = [
+operations_of_transactions = [
     {
         "id": 939719570,
         "state": "EXECUTED",
@@ -64,11 +62,6 @@ def filter_by_currency(transactions: list[dict], currency: str) -> Generator:
             yield transaction
 
 
-usd_transactions = filter_by_currency(transactions1, "USD")
-for _ in range(3):
-    print(next(usd_transactions)["id"])
-
-
 def transaction_descriptions(transactions: list[dict]) -> Generator:
     """
     принимает список словарей.
@@ -77,12 +70,6 @@ def transaction_descriptions(transactions: list[dict]) -> Generator:
     """
     for transaction in transactions:
         yield transaction["description"]
-
-
-description_of_operations = transaction_descriptions(transactions1)
-
-for _ in range(5):
-    print(next(description_of_operations))
 
 
 def card_number_generator(start: int, stop: int) -> Generator:
@@ -96,7 +83,3 @@ def card_number_generator(start: int, stop: int) -> Generator:
     for number in range(start, stop + 1):
         number_generator = (generator * "0") + str(number)
         yield f"{number_generator[0:4]} {number_generator[4:8]} {number_generator[8:12]} {number_generator[12:]}"
-
-
-for card_number in card_number_generator(26, 29):
-    print(card_number)

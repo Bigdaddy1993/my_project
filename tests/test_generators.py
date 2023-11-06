@@ -4,7 +4,7 @@ from src.generators import card_number_generator, filter_by_currency, transactio
 
 
 @pytest.fixture
-def fixture():
+def operations_of_transactions():
     return [
         {
             "id": 939719570,
@@ -57,13 +57,13 @@ def fixture():
 @pytest.mark.parametrize(
     "inner_data, expected", [("USD", [939719570, 142264268, 895315941]), ("RUB", [873106923, 594226727])]
 )
-def test_filter_by_currency(fixture, inner_data, expected):
-    usd_transactions = filter_by_currency(fixture, inner_data)
+def test_filter_by_currency(operations_of_transactions, inner_data, expected):
+    usd_transactions = filter_by_currency(operations_of_transactions, inner_data)
     assert [x["id"] for x in list(usd_transactions)] == expected
 
 
-def test_transaction_descriptions(fixture):
-    assert list(transaction_descriptions(fixture)) == [
+def test_transaction_descriptions(operations_of_transactions):
+    assert list(transaction_descriptions(operations_of_transactions)) == [
         "Перевод организации",
         "Перевод со счета на счет",
         "Перевод со счета на счет",
