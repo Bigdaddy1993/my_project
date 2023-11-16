@@ -1,7 +1,8 @@
 import json
+from typing import Any
 
 
-def get_json(path: str) -> list[dict]:
+def get_json(path: str) -> Any:
     """
     принимает на вход путь до JSON-файла
     :param path: path
