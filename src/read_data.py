@@ -1,10 +1,11 @@
 import pandas as pd
 import csv
+from typing import Any
 
 from settings import TRANSACTIONS, TRANSACTIONS_EXCEL
 
 
-def read_data():
+def read_data() -> list:
     """
     Открывает файл и читает его , формат csv
     :return: список транзакций из файла
@@ -17,7 +18,7 @@ def read_data():
     return transactions
 
 
-def read_xlsx():
+def read_xlsx() -> Any:
     """
     преобразовывает данные из файла xlsx в список транзакций
     :return: список транзакций
