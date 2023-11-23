@@ -14,8 +14,10 @@ def get_json(path: str) -> Any:
         with open(path, encoding='utf8') as file:
             operations = json.load(file)
     except FileNotFoundError:
+        logger.error(f'файл не найден {FileNotFoundError}')
         operations = []
     except json.JSONDecodeError:
+        logger.error(f'ошибка кодировки файла {json.JSONDecodeError}')
         operations = []
     logger.info(f'вернулся список словарей с данными о финансовых транзакциях {operations}')
     return operations
@@ -28,7 +30,8 @@ def transactions(operation: dict) -> float | str:
     :return: возвращает сумму транзакции в рублях
     """
     if operation['operationAmount']['currency']['code'] == 'RUB':
-        logger.info(f'вернул сумму транзакции в рублях {operation['operationAmount']['amount']}')
+        logger.info(f"вернул сумму транзакции в рублях {operation['operationAmount']['amount']}")
         return float(operation['operationAmount']['amount'])
     else:
+        logger.error('Транзация выполнена не в рублях. Укажите транзакцию в рублях')
         raise ValueError("Транзация выполнена не в рублях. Укажите транзакцию в рублях")

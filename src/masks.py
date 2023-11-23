@@ -7,14 +7,16 @@ def number_of_card(card_number: str) -> str:
     XXXX XX** **** XXXX
     :return:
     """
-
-    mask_number = card_number[:6] + (len(card_number[6:-4]) * "*") + card_number[-4:]
-    four_numbers_size = 4
-    mask_number_card = " ".join(
-        [mask_number[num : num + four_numbers_size] for num in range(0, len(mask_number), four_numbers_size)]
-    )
-    logger.info(f"Номер карты замаскирован {mask_number_card}")
-    return mask_number_card
+    try:
+        mask_number = card_number[:6] + (len(card_number[6:-4]) * "*") + card_number[-4:]
+        four_numbers_size = 4
+        mask_number_card = " ".join(
+            [mask_number[num: num + four_numbers_size] for num in range(0, len(mask_number), four_numbers_size)]
+        )
+        logger.info(f"Номер карты успешно замаскирован {mask_number_card}")
+        return mask_number_card
+    except Exception as error:
+        logger.error(f'ошибка маскировки крты {error}')
 
 
 def number_of_account(account_number: str) -> str:
@@ -23,8 +25,10 @@ def number_of_account(account_number: str) -> str:
     **XXXX
     :return:
     """
-
-    mask_number = (len(account_number[:-4]) * "*") + account_number[-4:]
-    sliced = mask_number[-6:]
-    logger.info(f"Номер счёта замаскирован {sliced}")
-    return sliced
+    try:
+        mask_number = (len(account_number[:-4]) * "*") + account_number[-4:]
+        sliced = mask_number[-6:]
+        logger.info(f"Номер счёта успешно замаскирован {sliced}")
+        return sliced
+    except Exception as error:
+        logger.error(f'ошибка маскировки счёта {error}')
