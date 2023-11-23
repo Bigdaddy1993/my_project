@@ -17,6 +17,7 @@ def number_of_card(card_number: str) -> str:
         return mask_number_card
     except Exception as error:
         logger.error(f'ошибка маскировки крты {error}')
+        raise
 
 
 def number_of_account(account_number: str) -> str:
@@ -32,3 +33,4 @@ def number_of_account(account_number: str) -> str:
         return sliced
     except Exception as error:
         logger.error(f'ошибка маскировки счёта {error}')
+        raise
