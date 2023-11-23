@@ -3,8 +3,6 @@ import pandas as pd
 
 from src.read_data import read_data, read_xlsx
 
-from settings import TRANSACTIONS
-
 
 def test_read_csv_mock():
     with unittest.mock.patch('src.read_data.csv.DictReader') as mock_reader:
