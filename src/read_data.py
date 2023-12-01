@@ -11,8 +11,8 @@ def read_data() -> list:
     :return: список транзакций из файла
     """
     transactions = []
-    with open(TRANSACTIONS, encoding='utf-8', newline='') as file:
-        data_open = csv.DictReader(file, delimiter=';')
+    with open(TRANSACTIONS, encoding="utf-8", newline="") as file:
+        data_open = csv.DictReader(file, delimiter=";")
         for raw in data_open:
             transactions.append(raw)
     return transactions
@@ -24,5 +24,5 @@ def read_xlsx() -> Any:
     :return: список транзакций
     """
     data = pd.read_excel(TRANSACTIONS_EXCEL)
-    transactions = data.to_dict('records')
+    transactions = data.to_dict("records")
     return transactions

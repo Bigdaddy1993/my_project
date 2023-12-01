@@ -11,15 +11,15 @@ def get_json(path: str) -> Any:
     :return: возвращает список словарей с данными о финансовых транзакциях
     """
     try:
-        with open(path, encoding='utf8') as file:
+        with open(path, encoding="utf8") as file:
             operations = json.load(file)
     except FileNotFoundError:
-        logger.error(f'файл не найден {FileNotFoundError}')
+        logger.error(f"файл не найден {FileNotFoundError}")
         operations = []
     except json.JSONDecodeError:
-        logger.error(f'ошибка кодировки файла {json.JSONDecodeError}')
+        logger.error(f"ошибка кодировки файла {json.JSONDecodeError}")
         operations = []
-    logger.info(f'вернулся список словарей с данными о финансовых транзакциях {operations}')
+    logger.info(f"вернулся список словарей с данными о финансовых транзакциях {operations}")
     return operations
 
 
@@ -29,9 +29,9 @@ def transactions(operation: dict) -> float | str:
     :param operation: dict
     :return: возвращает сумму транзакции в рублях
     """
-    if operation['operationAmount']['currency']['code'] == 'RUB':
+    if operation["operationAmount"]["currency"]["code"] == "RUB":
         logger.info(f"вернул сумму транзакции в рублях {operation['operationAmount']['amount']}")
-        return float(operation['operationAmount']['amount'])
+        return float(operation["operationAmount"]["amount"])
     else:
-        logger.error('Транзация выполнена не в рублях. Укажите транзакцию в рублях')
+        logger.error("Транзация выполнена не в рублях. Укажите транзакцию в рублях")
         raise ValueError("Транзация выполнена не в рублях. Укажите транзакцию в рублях")
