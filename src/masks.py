@@ -16,7 +16,7 @@ def number_of_card(card_number: str) -> str:
         logger.info(f"Номер карты успешно замаскирован {mask_number_card}")
         return mask_number_card
     except Exception as error:
-        logger.error(f'ошибка маскировки крты {error}')
+        logger.error(f"ошибка маскировки крты {error}")
         raise
 
 
@@ -32,5 +32,5 @@ def number_of_account(account_number: str) -> str:
         logger.info(f"Номер счёта успешно замаскирован {sliced}")
         return sliced
     except Exception as error:
-        logger.error(f'ошибка маскировки счёта {error}')
+        logger.error(f"ошибка маскировки счёта {error}")
         raise
